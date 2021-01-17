@@ -1,0 +1,5 @@
+#!/bin/sh
+
+htmllocation="/home/pn/html"
+
+rsync -aP $htmllocation/* mikr:/var/www/html

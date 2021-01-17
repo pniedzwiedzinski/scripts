@@ -1,0 +1,14 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i sh -p rsync git nur.repos.pn.sfg
+
+gmilocation="/home/pn/gmi"
+
+cd $gmilocation
+
+sfg -t niedzwiedzinski.cyou gemini://niedzwiedzinski.cyou/ ./blog > feed.xml
+sfg -t recipes.niedzwiedzinski.cyou gemini://niedzwiedzinski.cyou/ ./recipes > recipes/feed.xml
+
+modified=`git diff-index --quiet HEAD`
+new=`git ls-files --others`
+
+rsync -aP $gmilocation/* mikr:/var/www/gemini

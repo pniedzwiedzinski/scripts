@@ -1,0 +1,9 @@
+#!/bin/sh
+
+timeout=${1:-5m}
+
+xset s off
+xset s noblank
+systemd-inhibit --what=handle-lid-switch sleep $timeout
+xset s on
+xset s blank

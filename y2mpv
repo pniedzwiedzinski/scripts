@@ -1,0 +1,8 @@
+#/bin/sh
+## Script for viewing current video from browser in mpv
+
+sleep 0.2
+xdotool getactivewindow key Control_L+l Control_L+c
+video="$(xclip -o -sel clip)"
+notify-send "Playing $video"
+mpv $video || notify-send "Error occured while playing '$video'"

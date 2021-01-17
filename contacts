@@ -1,0 +1,5 @@
+#!/bin/sh
+
+contacts=`cat /dev/stdin | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/, /g'`
+
+echo "alias rodzice $contacts"

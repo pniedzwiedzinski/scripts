@@ -1,0 +1,5 @@
+#!/bin/sh
+
+loc="/tmp/contacts.csv" # Google CSV
+
+awk -F',' '{ print $1,"<",$31,">" }' $loc | sed '/@/!d; s/< /</g ; s/ >/>/g'
